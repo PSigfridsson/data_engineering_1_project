@@ -16,7 +16,7 @@ Currently, 3 VM's setup with 20gb volume, 2 VCPUS with 2 GB ram.
 * Node 2: 130.238.29.7
 
 ### Hadoop Setup
-**Step 1:** As always when launching a new linux instance, we need to run the commands below to update all installed packages on the machine. Do this on all instances.10
+**Step 1:** As always when launching a new linux instance, we need to run the commands below to update all installed packages on the machine. Do this on all instances.
 - ```sudo apt-get update```
 - ```sudo apt-get upgrade ```
 
