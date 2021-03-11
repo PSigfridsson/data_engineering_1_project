@@ -23,8 +23,8 @@ Currently, 3 VM's setup with 20gb volume, 2 VCPUS with 2 GB ram.
 **Step 2:** From the master node (node 0), run the below commands. The following commands setup so that the master node have passwordless login (ssh) to the worker nodes.
 - ```ssh-keygen -t rsa -P '' -f ~/.ssh/id_rsa``` - Generates new key.
 - ```cat .ssh/id_rsa.pub >> ~/.ssh/authorized_keys``` - Append the new key to the authorized keys.
-- ```scp -i team_19.pem .ssh/authorized_keys ubuntu@192.168.2.58:/home/ubuntu/.ssh/authorized_keys``` - Copy the new key to node 1
-- ```scp -i team_19.pem .ssh/authorized_keys ubuntu@192.168.2.10:/home/ubuntu/.ssh/authorized_keys``` - Copy the new key to node 2
+- ```scp -i team_19.pem .ssh/authorized_keys ubuntu@192.168.2.58:/home/ubuntu/.ssh/authorized_keys``` - Copy the new key to node1
+- ```scp -i team_19.pem .ssh/authorized_keys ubuntu@192.168.2.10:/home/ubuntu/.ssh/authorized_keys``` - Copy the new key to node2
 
 **Step 3:** Add all nodes to /etc/hosts on the master node.
 - ```sudo nano /etc/hosts``` Edit and add the text below:
