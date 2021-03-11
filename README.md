@@ -92,16 +92,15 @@ Currently, 3 VM's setup with 20gb volume, 2 VCPUS with 2 GB ram.
 - ```scp ~/hadoop/etc/hadoop/core-site.xml ubuntu@LAN_IP_FOR_NODE:~/hadoop/etc/hadoop/core-site.xml ``` - Copy to the files to the nodes.
 - ```scp ~/hadoop/etc/hadoop/yarn-site.xml ubuntu@LAN_IP_FOR_NODE:~/hadoop/etc/hadoop/yarn-site.xml ``` - Copy to the files to the nodes.
 - ```nano ~/hadoop/etc/hadoop/mapred-site.xml``` - ONLY ON MASTER, edit file, add text below.
-	- ```<configuration>
-    <property>
-        <name>mapreduce.jobtracker.address</name>
-        <value>192.168.2.216:54311</value>
-    </property>
-    <property>
-        <name>mapreduce.framework.name</name>
-        <value>yarn</value>
-    </property>
-</configuration>```
+<configuration>		    <property>
+			<name>mapreduce.jobtracker.address</name>
+			<value>192.168.2.216:54311</value>
+		    </property>
+		    <property>
+			<name>mapreduce.framework.name</name>
+			<value>yarn</value>
+		    </property>
+		</configuration>
 
 ***Step 8:*** Create data folder on ALL nodes.
 - ```sudo mkdir -p /usr/local/hadoop/hdfs/data```
