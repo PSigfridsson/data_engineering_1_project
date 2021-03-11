@@ -28,9 +28,11 @@ Currently, 3 VM's setup with 20gb volume, 2 VCPUS with 2 GB ram.
 
 **Step 3:** Add all nodes to /etc/hosts on the master node.
 - ```sudo nano /etc/hosts``` Edit and add the text below:
-  - ```192.168.2.216 master```
-  - ```192.168.2.58 worker-node1```
-  - ```192.168.2.10 worker-node2```
+```
+192.168.2.216 master
+192.168.2.58 worker-node1
+192.168.2.10 worker-node2
+```
 
 **Step 4:** Install JDK1.8 on all nodes.
 - ```sudo apt-get -y install openjdk-8-jdk-headless``` - Installs JDK1.8
