@@ -44,22 +44,34 @@ Currently, 3 VM's setup with 20gb volume, 2 VCPUS with 2 GB ram.
 
 **Step 6:** Hadoop configuration on all nodes.
 - ```nano ~/.bashrc``` - Edits file, add the text below.
-	- ```export HADOOP_HOME=/home/ubuntu/hadoop```
-	- ```export PATH=$PATH:$HADOOP_HOME/bin```
-	- ```export PATH=$PATH:$HADOOP_HOME/sbin```
-	- ```export HADOOP_MAPRED_HOME=${HADOOP_HOME}```
-	- ```export HADOOP_COMMON_HOME=${HADOOP_HOME}```
-	- ```export HADOOP_HDFS_HOME=${HADOOP_HOME}```
-	- ```export YARN_HOME=${HADOOP_HOME}```
+```
+export HADOOP_HOME=/home/ubuntu/hadoop
+export PATH=$PATH:$HADOOP_HOME/bin
+export PATH=$PATH:$HADOOP_HOME/sbin
+export HADOOP_MAPRED_HOME=${HADOOP_HOME}
+export HADOOP_COMMON_HOME=${HADOOP_HOME}
+export HADOOP_HDFS_HOME=${HADOOP_HOME}
+export YARN_HOME=${HADOOP_HOME}
+```
 - ```source ~/.bashrc``` - Reloads the env variables.
 
 **Step 7:** Hadoop cluster configuration, do this on the master node then copy to the worker nodes.
 - ```nano ~/hadoop/etc/hadoop/hadoop-env.sh``` - Add/Edit the below text.
-	- ```export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64```
+
+```export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64```
+
 - ```nano ~/hadoop/etc/hadoop/core-site.xml``` - Edit file, add text below.
-	- ```<configuration> <property> <name>fs.defaultFS</name> <value>hdfs://192.168.2.216:9000</value> </property> </configuration>```
+```
+<configuration>
+	<property>
+		<name>fs.defaultFS</name>
+		<value>hdfs://192.168.2.216:9000</value>
+	</property>
+</configuration>
+```
 - ```nano ~/hadoop/etc/hadoop/hdfs-site.xml``` - Edit file, add text below.
-	- ```<configuration>
+```
+<configuration>
     <property>
         <name>dfs.replication</name>
         <value>3</value>
@@ -72,9 +84,11 @@ Currently, 3 VM's setup with 20gb volume, 2 VCPUS with 2 GB ram.
         <name>dfs.datanode.data.dir</name>
         <value>file:///usr/local/hadoop/hdfs/data</value>
     </property>
-</configuration>```
+</configuration>
+```
 - ```nano ~/hadoop/etc/hadoop/yarn-site.xml``` - Edit file, add text below.
-	- ```<configuration>
+```
+<configuration>
     <property>
         <name>yarn.nodemanager.aux-services</name>
         <value>mapreduce_shuffle</value>
@@ -87,20 +101,24 @@ Currently, 3 VM's setup with 20gb volume, 2 VCPUS with 2 GB ram.
        <name>yarn.resourcemanager.hostname</name>
        <value>192.168.2.216</value>
     </property>
-</configuration>```
+</configuration>
+```
 - ```scp ~/hadoop/etc/hadoop/hdfs-site.xml ubuntu@LAN_IP_FOR_NODE:~/hadoop/etc/hadoop/hdfs-site.xml ``` - Copy to the files to the nodes.
 - ```scp ~/hadoop/etc/hadoop/core-site.xml ubuntu@LAN_IP_FOR_NODE:~/hadoop/etc/hadoop/core-site.xml ``` - Copy to the files to the nodes.
 - ```scp ~/hadoop/etc/hadoop/yarn-site.xml ubuntu@LAN_IP_FOR_NODE:~/hadoop/etc/hadoop/yarn-site.xml ``` - Copy to the files to the nodes.
 - ```nano ~/hadoop/etc/hadoop/mapred-site.xml``` - ONLY ON MASTER, edit file, add text below.
-<configuration>		    <property>
-			<name>mapreduce.jobtracker.address</name>
-			<value>192.168.2.216:54311</value>
-		    </property>
-		    <property>
-			<name>mapreduce.framework.name</name>
-			<value>yarn</value>
-		    </property>
-		</configuration>
+```
+<configuration>
+	<property>
+		<name>mapreduce.jobtracker.address</name>
+		<value>192.168.2.216:54311</value>
+	</property>
+	<property>
+		<name>mapreduce.framework.name</name>
+		<value>yarn</value>
+	</property>
+</configuration>
+```
 
 ***Step 8:*** Create data folder on ALL nodes.
 - ```sudo mkdir -p /usr/local/hadoop/hdfs/data```
