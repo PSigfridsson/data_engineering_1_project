@@ -61,7 +61,7 @@ export YARN_HOME=${HADOOP_HOME}
 ```export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64```
 
 - ```nano ~/hadoop/etc/hadoop/core-site.xml``` - Edit file, add text below.
-```
+```xml
 <configuration>
 	<property>
 		<name>fs.defaultFS</name>
@@ -70,7 +70,7 @@ export YARN_HOME=${HADOOP_HOME}
 </configuration>
 ```
 - ```nano ~/hadoop/etc/hadoop/hdfs-site.xml``` - Edit file, add text below.
-```
+```xml
 <configuration>
     <property>
         <name>dfs.replication</name>
@@ -87,7 +87,7 @@ export YARN_HOME=${HADOOP_HOME}
 </configuration>
 ```
 - ```nano ~/hadoop/etc/hadoop/yarn-site.xml``` - Edit file, add text below.
-```
+```xml
 <configuration>
     <property>
         <name>yarn.nodemanager.aux-services</name>
@@ -107,7 +107,7 @@ export YARN_HOME=${HADOOP_HOME}
 - ```scp ~/hadoop/etc/hadoop/core-site.xml ubuntu@LAN_IP_FOR_NODE:~/hadoop/etc/hadoop/core-site.xml ``` - Copy to the files to the nodes.
 - ```scp ~/hadoop/etc/hadoop/yarn-site.xml ubuntu@LAN_IP_FOR_NODE:~/hadoop/etc/hadoop/yarn-site.xml ``` - Copy to the files to the nodes.
 - ```nano ~/hadoop/etc/hadoop/mapred-site.xml``` - ONLY ON MASTER, edit file, add text below.
-```
+```xml
 <configuration>
 	<property>
 		<name>mapreduce.jobtracker.address</name>
@@ -137,13 +137,13 @@ Now run the following command on all nodes to verifiy that the hdfs start was su
 - ```jps``` - The master node should be running NameNode and SecondaryNameNode. The workers should run DataNode.
 
 Now the hdfs should be properly setup. To connect to the web gui edit your ~/.ssh/config file. Add the following:
-
+```
 	Host 130.238.29.209
   		User ubuntu
   		# modify this to match the name of your key
   		IdentityFile ~/.ssh/team_19.pem
   		# HDFS namenode web gui
   		LocalForward 9870 192.168.2.216:50070
-
+```
 Now you should be able to connect to the hdfs web gui by typing http://localhost:9870 in your browser, on your local machine. (This assumes the proper security group is added to the master.)
 ### Spark Setup
