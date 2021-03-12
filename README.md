@@ -1,4 +1,4 @@
-# Data Engineering 1 - Project
+# Data Engineering 1 - Project - Team 19
 Repository for the Data Engineering 1 project.
 
 ## Spark/hdfs Cluster Setup
