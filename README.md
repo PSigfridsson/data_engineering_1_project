@@ -149,3 +149,5 @@ Now the hdfs should be properly setup. To connect to the web gui edit your ~/.ss
 ```
 Now you should be able to connect to the hdfs web gui by typing http://localhost:9870 in your browser, on your local machine. (This assumes the proper security group is added to the master.)
 ### Spark Setup
+### Convert the millon songs data set
+original github code here: https://github.com/Junjie-Chu/DataEngineering1_Project
